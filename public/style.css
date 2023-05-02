@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+body {
+  margin: 0;
+  font-size: 20px;
+  color: white;
+  background-color: #111;
+  font-family: 'Open Sans', Arial, sans-serif;
+}
+.content {
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+code {
+  font-size: 15px;
+}
+@media only screen and (min-width: 400px) {
+  .content {
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+}
+@media only screen and (min-width: 800px) {
+  .content {
+    width: 30%;
+    margin-left: 35%;
+    margin-right: 35%;
+  }
+}
+.header {
+  background-color: black;
+  padding: 4px 8px;
+}
+
+.center {
+  text-align: center;
+}

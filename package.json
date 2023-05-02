@@ -1,0 +1,14 @@
+{
+    "name": "allgit",
+    "version": "0.1.0",
+    "description": "Serves raw files from Github, Gitlab, and Bitbucket, but with the correct Content-Type headers.",
+    "main": "index.js",
+    "scripts": {
+      "start": "node index.js"
+    },
+    "dependencies": {
+      "express": "^4.18.2",
+      "node-fetch": "^2.6.9",
+      "mime-lookup": "^0.0.2"
+    }
+  }
