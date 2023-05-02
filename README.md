@@ -1,3 +1,3 @@
 # Allgit
 
-Allgit serves raw files from Github and Gitlab, but with the proper Content-Type headers.
+Allgit serves raw files from Github, Gitlab, and Bitbucket, but with the proper Content-Type headers.
