@@ -1,6 +1,7 @@
 # Allgit
 
 ### Allgit serves raw files from Github, Gitlab, and Bitbucket, but with the proper Content-Type headers.
+**NOTE:** Allgit will not send proper Content-Type headers for HTML files, unless your repository is specifically approved.
 
 ## Usage
 
@@ -30,6 +31,12 @@ https://rawgit.pp.ua/gl/user/repo/file_path_here
 https://rawgit.pp.ua/bb/user/repo/commit_sha_or_head/file_path_here
 -- Get a file
 ```
+
+## Approved Repositories
+
+This is a list of approved repositories for HTML headers on Github and Gitlab.
+
+- **Github:** 3hk0/3hk0-Assets
 
 ## Deploying
 comign soon
