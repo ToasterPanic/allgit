@@ -14,6 +14,9 @@ body {
 }
 code {
   font-size: 15px;
+  white-space: normal;
+  word-wrap: normal;
+  overflow-wrap: anywhere;
 }
 input {
   width: 100%;
