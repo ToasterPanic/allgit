@@ -3,12 +3,27 @@ var app = express();
 const fetch = require('node-fetch');
 var MimeLookup = require('mime-lookup');
 var mime = new MimeLookup(require('mime-db'));
+var minify = require('express-minify');
 
 var port = process.env.PORT || 3000;
 
 const approvedForHTML = [
   "/gh/3kh0/3kh0-Assets@main/"
 ]
+
+// Minifying
+app.use(minify({
+  cache: false,
+  uglifyJsModule: null,
+  errorHandler: null,
+  jsMatch: /javascript/,
+  cssMatch: /css/,
+  jsonMatch: /json/,
+  sassMatch: /scss/,
+  lessMatch: /less/,
+  stylusMatch: /stylus/,
+  coffeeScriptMatch: /coffeescript/,
+}));
 
 app.use(express.static("public"));
 

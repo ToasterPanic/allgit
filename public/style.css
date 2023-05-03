@@ -42,6 +42,9 @@ input {
   background-color: black;
   padding: 4px 8px;
 }
+.header > img {
+  max-height: 46px;
+}
 
 .center {
   text-align: center;
