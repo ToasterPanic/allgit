@@ -9,7 +9,6 @@
   "dependencies": {
     "express": "^4.18.2",
     "node-fetch": "^2.6.9",
-    "mime-lookup": "^0.0.2",
-    "express-minify": "^1.0.0"
+    "mime-lookup": "^0.0.2"
   }
 }
