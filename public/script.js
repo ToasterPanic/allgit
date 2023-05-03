@@ -2,6 +2,8 @@ const input = document.querySelector("input");
 const result = document.querySelector(".result");
 const urlResult = document.querySelector(".result > code");
 
+input.value = "";
+
 input.oninput = function() {
   if (
     /^https:\/\/github\.com\/([a-zA-Z0-9.\-_]+)\/([a-zA-Z0-9.\-_]+)\/blob\/([a-zA-Z0-9.\-_]+)\/([a-zA-Z0-9%&?_\-+./]+)$/
