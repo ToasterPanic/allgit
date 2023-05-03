@@ -12,8 +12,6 @@ const approvedForHTML = [
   "/gh/username134567/username134567.github.io@main/"
 ];
 
-const app = express()
-
 app.use(express.urlencoded({ extended: true }))
 
 app.use(
