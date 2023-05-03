@@ -37,7 +37,7 @@ app.get('/te@:url/:user/:repo@:branch/*', (req, res) => {
           'Content-Type', 
           (function() {
             if (req.originalUrl.endsWith(".html")) {
-              return "text/plain"; // Gitea repos cannot get put on HTML allowlist
+              return "text/plain";
             } else {
               return mime.lookup(url)
               .replace("application/javascript","text/javascript");
@@ -60,8 +60,12 @@ app.get('/te@:url/:user/:repo@:branch/*', (req, res) => {
     
   })
   .catch(res2 => {
-    console.error(res2);
-    res.status(500).send("There's been an error server-side and we couldn't fulfill your request.");
+    if (res2.code == "ENOTFOUND") {
+      res.status(404).send("Sorry, we can't find that file.");
+    } else {
+      res.status(500).send("There's been an error server-side and we couldn't fulfill your request.");
+    }
+    
   })
 })
 
@@ -111,10 +115,17 @@ app.get('/:service/:user/:repo@:branch/*', (req, res) => {
       if (res2.status == "404") {
         res.status(404).send("Sorry, we can't find that file.");
       } else if (res2.status == "403") {
-        res.status(403).send("We couldn't get that file (repo doesn't exist?)");
+        res.status(403).send("We couldn't get that file (repo doesn't exist / is private?)");
       } else {
         res.status(500).send("There's been an error server-side and we couldn't fulfill your request.");
       }
+    }
+    
+  }).catch(res2 => {
+    if (res2.code == "ENOTFOUND") {
+      res.status(404).send("Sorry, we can't find that file.");
+    } else {
+      res.status(500).send("There's been an error server-side and we couldn't fulfill your request.");
     }
     
   })

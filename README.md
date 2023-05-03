@@ -1,6 +1,6 @@
 # Allgit
 
-### Allgit serves raw files from Github, Gitlab, and Gitea, but with the proper Content-Type headers.
+### Allgit serves raw files from Github and Gitlab, but with the proper Content-Type headers.
 **NOTE:** Allgit will not send proper Content-Type headers for HTML files, unless your repository is specifically approved.
 
 ## Usage
@@ -26,4 +26,4 @@ This is a list of approved repositories for HTML headers on Github and Gitlab.
 - **Github:** 3hk0/3hk0-Assets
 
 ## Deploying
-comign soon
+`npm install`, then `npm start`. Simple.
