@@ -10,6 +10,6 @@
     "express": "^4.18.2",
     "node-fetch": "^2.6.9",
     "mime-lookup": "^0.0.2",
-    "umbress": "^1.3.4"
+    "ddos": "^0.2.1"
   }
 }

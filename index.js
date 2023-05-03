@@ -3,7 +3,8 @@ var app = express();
 const fetch = require('node-fetch');
 var MimeLookup = require('mime-lookup');
 var mime = new MimeLookup(require('mime-db'));
-var umbress = require('umbress');
+var reqDdos = require('ddos')
+var ddos = new reqDdos({burst:10, limit:15})
 
 var port = process.env.PORT || 3000;
 
@@ -12,16 +13,7 @@ const approvedForHTML = [
   "/gh/username134567/username134567.github.io@main/"
 ];
 
-app.use(express.urlencoded({ extended: true }))
-
-app.use(
-  umbress({
-    advancedClientChallenging: {
-      enabled: true,
-      cookieTtl: 30
-    }
-  })
-)
+app.use(ddos.express);
 
 app.use(express.static("public"));
 
