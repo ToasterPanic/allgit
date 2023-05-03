@@ -7,7 +7,8 @@ var mime = new MimeLookup(require('mime-db'));
 var port = process.env.PORT || 3000;
 
 const approvedForHTML = [
-  "/gh/3kh0/3kh0-Assets@main/"
+  "/gh/3kh0/3kh0-Assets@main/",
+  "/gh/username134567/username134567.github.io@main/"
 ];
 
 app.use(express.static("public"));
