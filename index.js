@@ -16,6 +16,55 @@ app.listen(port, () => {
   console.log(`Allgit listening on port ${port}`)
 });
 
+app.get('/te@:url/:user/:repo@:branch/*', (req, res) => {
+  // Gets the file location
+  req.params.file = req.originalUrl.replace(/\/[^\/]+\/[^\/]+\/[^\/]+@[^\/]+\/([\s\S]+)/,"$1");
+  
+  // adsadasd
+  var url = `https://${req.params.url}/${req.params.user}/${req.params.repo}/raw/branch/${req.params.branch}/${req.params.file}`;
+  
+  console.log(url)
+  // Let's fetch!
+  fetch(url)
+  .then(res2 => {
+    if (res2.ok) {
+      // Response was ok, read the response and send it through!
+      res2.text().then(body => {
+        // Cache for 1 hour
+        res.setHeader('Cache-Control', "max-age=3600");
+        // Get correct MIME type, replace old MIME types with new ones
+        res.setHeader(
+          'Content-Type', 
+          (function() {
+            if (req.originalUrl.endsWith(".html")) {
+              return "text/plain"; // Gitea repos cannot get put on HTML allowlist
+            } else {
+              return mime.lookup(url)
+              .replace("application/javascript","text/javascript");
+            }
+          })()
+        );
+        res.end(body);
+      });
+    } else {
+      console.log(res2.status);
+      // Response was not ok, send an error status or message.
+      if (res2.status == "404") {
+        res.status(404).send("Sorry, we can't find that file.");
+      } else if (res2.status == "403") {
+        res.status(403).send("We couldn't get that file (repo doesn't exist?)");
+      } else {
+        res.status(500).send("There's been an error server-side and we couldn't fulfill your request.");
+      }
+    }
+    
+  })
+  .catch(res2 => {
+    console.error(res2);
+    res.status(500).send("There's been an error server-side and we couldn't fulfill your request.");
+  })
+})
+
 app.get('/:service/:user/:repo@:branch/*', (req, res) => {
   // Gets the file location
   req.params.file = req.originalUrl.replace(/\/[^\/]+\/[^\/]+\/[^\/]+@[^\/]+\/([\s\S]+)/,"$1");
