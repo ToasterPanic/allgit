@@ -11,16 +11,20 @@
 
 For Github:
 
-```lua
+```
 https://allgit.rk1.us/gh/user/repo@branch/file_path_here
--- Get a file from a branch
 ```
 
 For Gitlab:
 
-```lua
+```
 https://allgit.rk1.us/gl/user/repo@branch/file_path_here
--- Get a file from a branch
+```
+
+For Gitea:
+
+```
+https://allgit.rk1.us/te@url_to_gitea_instance/user/repo@branch/file_path_here
 ```
 
 ## Deploying
